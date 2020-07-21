@@ -18,9 +18,14 @@ I_tot = sum(H.Nodes.Infected);
 
 % Find adjacent nodes
 for node = 1:m*n
-    ntemp = neighbors(H,node);
-    neib(node,1:length(ntemp)) = ntemp;
-    ntemp = [];
+   %NEIGHBORS FOR NONREFINED MESH
+   % ntemp = neighbors(H,node);
+   % neib(node,1:length(ntemp)) = ntemp;
+   % ntemp = [];
+   
+   %NEIGHBORS FOR REFINED MESH
+   
+   
 end
 % Find nodes 2 edges away
 for node = 1:m*n
@@ -61,7 +66,7 @@ for t = 1:numsteps
     S_tot = [S_tot, sum(H.Nodes.Suceptible)];
     
     % nonlinear optimization
-    [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(m,n,H.Nodes.Infected,neib,dneib);
+    [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(m,n,H.Nodes.Infected,didt,neib,dneib,tau);
     indnonlinx = find(nonlinx);
     if size(indnonlinx,2) == 0
         nonlinx_tot(t) = 0;
