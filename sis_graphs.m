@@ -19,9 +19,9 @@ I_tot = sum(H.Nodes.Infected);
 % Find adjacent nodes
 for node = 1:m*n
    %NEIGHBORS FOR NONREFINED MESH
-   % ntemp = neighbors(H,node);
-   % neib(node,1:length(ntemp)) = ntemp;
-   % ntemp = [];
+   ntemp = neighbors(H,node);
+   neib(node,1:length(ntemp)) = ntemp;
+   ntemp = [];
    
    %NEIGHBORS FOR REFINED MESH
    
@@ -43,6 +43,9 @@ x_tot = zeros(numsteps,1); I_indtot = zeros(numsteps,1);
 nonlinx_tot = zeros(numsteps,1);
 I_neigh = zeros(m*n,1); S_neigh = zeros(m*n,1);
 
+
+tic
+numsteps = 1;
 for t = 1:numsteps
     % Calculate Infected,Suceptible neighbors
     for i = 1:m*n
@@ -66,7 +69,9 @@ for t = 1:numsteps
     S_tot = [S_tot, sum(H.Nodes.Suceptible)];
     
     % nonlinear optimization
+
     [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(m,n,H.Nodes.Infected,didt,neib,dneib,tau);
+    
     indnonlinx = find(nonlinx);
     if size(indnonlinx,2) == 0
         nonlinx_tot(t) = 0;
@@ -78,7 +83,7 @@ for t = 1:numsteps
     I_indtot(t) = indI;
     
 end
-
+t = toc
 figure
 plot(I_tot,'r')
 hold on

@@ -29,17 +29,18 @@ fun = @(F) objfun(m,n,I,M,R,G,F,didt,neib,dneib,tau);
     % MaxStallGenerations - one possible stopping criteria (looks at avg relative change)
     % MaxGerations - number of iterations before ga stops
 options = optimoptions('ga','PopulationSize',200,'PlotFcn',{@gaplotbestf,@gaplotstopping},...
-    'FunctionTolerance',10e-3,'MaxStallGenerations',15,'MaxGenerations',20);
+    'FunctionTolerance',10e-4,'MaxStallGenerations',15,'MaxGenerations',30);
 options = optimoptions(options,'UseVectorized',true);
 [x,fval,exitFlag,Output,pop,scores] = ga(fun,m*n,A,b,Aeq,beq,lb,ub,nonlcon,intcon,options);
 end
 
 function L = objfun(m,n,I,M,R,G,F,didt,neib,dneib,tau)
     L = zeros(m*n,1);
+    I(1)*didt(1)
     for node = 1:m*n
         nnode = neib(node,:); nnode = nnode(nnode~=0);
         dnode = dneib(node,:); dnode = dnode(dnode~=0);
-        L(node) = ((I(node)*didt(node)) + (tau*didt(nnode)*I(nnode)') + ((tau^2)*didt(dnode)*I(dnode)'))*...
+        L(node) = ((I(node)*didt(node)) + (tau*I(nnode)'*didt(nnode)) + ((tau^2)*I(dnode)'*didt(dnode)))*...
             (1 - M(1)*R(node) - G(1)*F(node) - M(2)*sum(R(nnode)) ...
             - G(2)*sum(F(nnode)) - M(3)*sum(R(dnode)) - G(3)*sum(F(dnode)));
     end
