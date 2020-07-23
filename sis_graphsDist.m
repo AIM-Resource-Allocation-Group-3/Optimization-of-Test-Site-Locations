@@ -22,6 +22,7 @@ for i = 1:m*n
 end
 H.Nodes.Population = H.Nodes.Suceptible + H.Nodes.Infected;
 popNodes = find(H.Nodes.Suceptible);
+fixedTest = [4,8,19];
 disp(H.Nodes)
 
 % For plotting S,I over time
@@ -30,16 +31,29 @@ I_tot = sum(H.Nodes.Infected);
 
 % Find nearest pop node within dist radius (neib)
 % Find pop nodes within 2*dist radius (dneib)
-for node = 1:m*n
-    ntemp = nearest(H,node,dist);
-    dtemp = nearest(H,node,2*dist);
+% Find nearest fixed test site (fixneib)
+% Find fixed test site 2*dist away (fixdneib)
+% Find nearest poss test sites (possneib)
+% Find poss test site 2*dist away (possdneib)
+for node = 1:length(possTest)
+    ntemp = nearest(H,possTest(node),dist); dtemp = nearest(H,possTest(node),2*dist);
+    fixtemp = intersect(ntemp,fixedTest); fixdtemp = intersect(dtemp,fixedTest);
+    posstemp = intersect(ntemp,possTest); possdtemp = intersect(dtemp,possTest);
     ntemp = ntemp(find(H.Nodes.Population(ntemp)));
+    fixneib(node,1:length(fixtemp)) = fixtemp; possneib(node,1:length(posstemp)) = posstemp;
     dtemp = dtemp(find(H.Nodes.Population(dtemp)));
+    fixdneibdiff = setdiff(fixdtemp,fixtemp); possdneibdiff = setdiff(possdtemp,posstemp);
+    fixdneib(node,1:length(fixdneibdiff)) = fixdneibdiff; possdneib(node,1:length(possdneibdiff)) = possdneibdiff;
     neib(node,1:length(ntemp)) = ntemp;
     dtempDiff = setdiff(dtemp,ntemp);
     dneib(node,1:length(dtempDiff)) = dtempDiff;
     ntemp = []; dtemp = [];
 end
+
+pop_possTest = union(popNodes',possTest);
+s = setdiff(1:m*n,pop_possTest);
+
+
 
 dt = 1;
 final_time = 5;
@@ -47,7 +61,7 @@ numsteps = final_time/dt;
 x_tot = zeros(numsteps,1); I_indtot = zeros(numsteps,1);
 nonlinx_tot = zeros(numsteps,1);
 I_neigh = zeros(m*n,1); S_neigh = zeros(m*n,1);
-didt = zeros(m*n,1); dsdt = zeros(m*n,1);
+didt = zeros(m*n,1); dsdt = zeros(m*n,1); Ival_ind = [];
 
 for t = 1:numsteps
     % Calculate Infected,Suceptible neighbors
@@ -73,16 +87,22 @@ for t = 1:numsteps
     S_tot = [S_tot, sum(H.Nodes.Suceptible)];
     
     % nonlinear optimization
-    [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(H.Nodes.Infected,didt,neib,dneib,tau,possTest);
+    [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(H.Nodes.Infected,didt,neib,dneib,possTest,dist,fixneib,fixdneib,possneib,possdneib);
     indnonlinx = find(nonlinx);
     if size(indnonlinx,2) == 0
         nonlinx_tot(t) = 0;
     else
         nonlinx_tot(t) = indnonlinx;
     end
-    
-    indI = find(H.Nodes.Infected == max(H.Nodes.Infected));
-    I_indtot(t) = indI;
+    Ival = [];
+    for node = 1:length(possTest)
+        nnode = neib(node,:); nnode = nnode(nnode~=0);
+        dnode = dneib(node,:); dnode = dnode(dnode~=0);
+        Ival = [Ival,((didt(nnode)'*H.Nodes.Infected(nnode))/dist + (didt(dnode)'*H.Nodes.Infected(dnode))/(2*dist))];
+    end
+    Ival_ind(t) = find(Ival == max(Ival)); 
+%     indI = find(H.Nodes.Infected == max(H.Nodes.Infected));
+%     I_indtot(t) = indI;
     
 end
 
@@ -91,4 +111,8 @@ plot(I_tot,'r')
 hold on
 plot(S_tot,'b')
 hold off
+
+% Look at nodes assigned for objective function and Infected number
+disp(possTest(nonlinx_tot))
+disp(possTest(Ival_ind))
 
