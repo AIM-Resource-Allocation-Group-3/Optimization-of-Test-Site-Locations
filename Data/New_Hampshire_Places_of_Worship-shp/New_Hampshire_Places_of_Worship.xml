@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20091016</pubdate>
+                <title>New Hampshire Places of Worship</title>
+                <edition>4th Quarter</edition>
+                <geoform>vector digital data</geoform>
+                <onlink>https://nhgeodata.unh.edu/nhgeodata/rest/services/CSD/HSIP_ServiceFacilities/MapServer/6</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>The Places of Worship dataset is composed of any type of building or portion of a building that is used, constructed, designed, or adapted to be used as a place for religious and spiritual activities. These facilities include, but are not limited to, the following types: chapels, churches, mosques, shrines, synagogues, and temples. The license free Large Protestant Churches, Mosques, Jewish Synagogues, and Roman Catholic Churches in Large Cities datasets were merged together to create the initial data for the Places of Worship dataset. Additional entities have been added from TGS research. This dataset contains Buddhist, Christian, Hindu, Islamic, Judaic, and Sikh places of worship. Unitarian places of worship have been included when a congregation from one of these religions meets at a church owned by a Unitarian congregation. Some Protestant denominations are not currently represented in this dataset. The Places of Worship dataset is not intended to include homes of religious leaders (unless they also serve as a place of organized worship), religious schools (unless they also serve as a place of organized worship for people other than those enrolled in the school), Jewish Mikvahs or Hillel facilities, and buildings that serve a purely administrative purpose. If a building's primary purpose is something other than worship (e.g., a community center, a public school), but a religious group uses the building for worship on a regular basis, it was included in this dataset if it otherwise met the criteria for inclusion. Convents and monasteries are included in this dataset, regardless of whether or not the facilities are open to the public, because religious services are regularly held at these locations. On 08/07/2007, TGS ceased making phone calls to verify information about religious locations. Therefore, most entities in this dataset were verified using alternative reference sources such as topographic maps, parcel maps, various sources of imagery, and internet research.</abstract>
+            <purpose>Places of worship in New Hampshire</purpose>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <rngdates>
+                    <begdate>20070720</begdate>
+                    <enddate>20090804</enddate>
+                </rngdates>
+            </timeinfo>
+            <current>ground condition</current>
+        </timeperd>
+        <status>
+            <progress>Complete</progress>
+            <update>Unknown</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-72.458669</westbc>
+                <eastbc>-70.755805</eastbc>
+                <northbc>44.750502</northbc>
+                <southbc>42.711954</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>LCSH - Library of Congress subject headings (Washington, DC: LC, Cataloging Distribution Service) http://authorities.loc.gov/</themekt>
+                <themekey>Christian shrines</themekey>
+                <themekey>Judaism.</themekey>
+                <themekey>Missionary Church</themekey>
+                <themekey>Synagogues as community centers</themekey>
+                <themekey>Protestant churches</themekey>
+                <themekey>Catholic</themekey>
+                <themekey>Islam.</themekey>
+                <themekey>Buddhist centers</themekey>
+                <themekey>Hindu shrines</themekey>
+                <themekey>Catholic Church.</themekey>
+                <themekey>Mosques.</themekey>
+                <themekey>Cathedrals.</themekey>
+                <themekey>Church.</themekey>
+                <themekey>Synagogues.</themekey>
+                <themekey>Protestant church buildings</themekey>
+                <themekey>Chapels</themekey>
+                <themekey>Jewish Christians.</themekey>
+                <themekey>Buddhism.</themekey>
+                <themekey>Convents.</themekey>
+                <themekey>Buddhist Churches of America</themekey>
+                <themekey>Monasteries</themekey>
+                <themekey>Unitarian Universalist churches.</themekey>
+                <themekey>Christian.</themekey>
+                <themekey>Missions.</themekey>
+                <themekey>Protestant</themekey>
+                <themekey>Jewish community centers</themekey>
+            </theme>
+            <theme>
+                <themekt>ISO 19115 Topic Category</themekt>
+                <themekey>structure</themekey>
+                <themekey>society</themekey>
+            </theme>
+            <theme>
+                <themekt>ISO 19115 Topic Categories</themekt>
+                <themekey>society</themekey>
+                <themekey>structure</themekey>
+            </theme>
+            <place>
+                <placekt>LCSH - Library of Congress subject headings (Washington, DC: LC, Cataloging Distribution Service) http://authorities.loc.gov/</placekt>
+                <placekey>New Hampshire</placekey>
+            </place>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>None</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>TechniGraphics, Inc.</cntorg>
+                    <cntper>Mike Thompson</cntper>
+                </cntorgp>
+                <cntpos>Director of Research and Development</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>3351 Eastbrook Drive</address>
+                    <city>Fort Collins</city>
+                    <state>CO</state>
+                    <postal>80525</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>970-224-4996</cntvoice>
+                <cntfax>970-224-3001</cntfax>
+                <cntemail>mike.thompson@tgstech.com</cntemail>
+                <hours>Monday - Friday 0800 - 1700 MST</hours>
+            </cntinfo>
+        </ptcontac>
+        <datacred>TechniGraphics, Inc.</datacred>
+        <secinfo>
+            <secsys>DOD</secsys>
+            <secclass>Unclassified</secclass>
+            <sechandl>Unclassified</sechandl>
+        </secinfo>
+        <native/>
+    </idinfo>
+    <dataqual>
+        <attracc>
+            <attraccr>The name, address, city, state, and five (5) digit zip codes were verified to be correct through alternate resources as of the date indicated by the [CONTDATE] field. The existence of the entity was also verified, as well as whether or not it met the criteria for inclusion in this dataset. Four (4) digit zip code extensions were derived from USPS (United States Postal Service) data and were not verified. ID Check: The [ID] field is not blank and each of its values is unique. Coordinate Check: Coordinates are not null or zero and the [X] and [Y] fields match the shape. Basic Address Check: Physical addresses were verified to be non blank and to not be a "PO Box", "General Delivery", "Highway Contract", or "Rural Route" address. Highway Address without Type Check: Physical addresses containing the word "Highway" or "Route" were verified to also contain a type designator such as "State", "US", or "County", if one actually exists for the highway or route. These type designators are often missing from addresses, leading to confusion if more than one "Highway" of the given number exists in an area. Basic Name Check: Entity name is not blank, is not the same as entity city, and has a minimum of two (2) characters. Name does not contain punctuation characters that can interfere with database operations, such as " (quote) and * (asterisk). City Check: Entity's [CITY] field is not blank, and entity is located within 25 miles of its tabular city as found in the NAVTEQ Named Places reference file. State Check: The entity is located within its tabular state. County Check: The entity is located within its tabular county. FIPS Check: The tabular FIPS Code matches the entity's tabular county and tabular state. County in Name vs. Geographic Location Check: If an entity's [NAME] field contains the word "county" or "co", the same county value should also be in the entity's [COUNTY] field. Basic Phone Check: All phone numbers (including the area code) are ten (10) numeric digits. Alphabetic characters have been converted to the corresponding numeric digit. NPA_NXX Check: Area codes (sometimes called "Number Planning Areas", or NPA's) and central office codes (sometimes known as exchanges, or NXX's) were validated against data from the North American Number Planning Administration (NANPA). In some cases, NPA-NXX combinations did not show up in the NANPA data but were verified to work. Area Code Distance Check: The entity's area code (NPA) is valid, and the entity is not more than 25 miles from its area code boundary, as defined by data from the North American Number Planning Administration (NANPA), unless TGS has previously verified that the phone number rings to a headquarters location or otherwise does not ring to the entity's location. Zip Code Check: The entity's zip code is five (5) or nine (9) numeric digits, is listed in the postal database, is in the same state as indicated by the entity's [STATE] value, and is not a PO Box only zip code. Zip City Check: The entity's zip code and its city were verified to match according to the USPS Address Information System (AIS). Zip Code Distance Check: The entity is located within 25 miles of its zip code boundary, as defined by the U.S. Census Bureau's 1999 Zip Code file. NAICS Code Check: The NAICS field is not blank, the NAICS Code is one of the accepted codes for this layer, the NAICS Description is an acceptable Index Entry for the NAICS Code, and certain key words in the entity name do not conflict with the NAICS Code. Collocation Check: Entities with different addresses must not share the exact same geospatial location. Geographic Spell Check: Words that appear in the entity name were checked against a standard English word list (and Spanish word list for entities in Puerto Rico). Words not appearing in these standard word lists were then checked against names appearing in the Geographic Names Information System (GNIS) of geographic features that are located within 25 miles of the entity. Proper names were manually reviewed for correct spelling. Supplied Coordinates Distance Check: Entity is located within 3 miles of coordinates supplied by the original source.</attraccr>
+        </attracc>
+        <logic>See "Attribute_Accuracy_Report". Many of the checks described in that section check for both attribute accuracy and logical consistency.</logic>
+        <complete>This dataset contains Buddhist, Christian, Hindu, Islamic, Judaic, and Sikh places of worship. Unitarian places of worship have been included when a congregation from one of these religions meets at a church owned by a Unitarian congregation. Some Protestant denominations are not currently represented in this dataset. The Places of Worship dataset is not intended to include homes of religious leaders (unless they also serve as a place of organized worship), religious schools (unless they also serve as a place of organized worship for people other than those enrolled in the school), Jewish Mikvahs or Hillel facilities, and buildings that serve a purely administrative purpose. If a building's primary purpose is something other than worship (e.g., a community center, a public school), but a religious group uses the building for worship on a regular basis, it was included in this dataset if it otherwise met the criteria for inclusion. Convents and monasteries are included in this dataset, regardless of whether or not the facilities are open to the public, because religious services are regularly held at these locations.</complete>
+        <posacc>
+            <horizpa>
+                <horizpar>The geographic location of entities was verified to be correct relative to the street vendor and version indicated by the [ST_VENDOR] and [ST_VERSION] fields. The horizontal accuracy is indicated by the [GEOPREC] field. A value of "BLOCKFACE" indicates the entity was geocoded on the correct street segment (block) and correct side of the street. A value of "ONENTITY" indicates that the location is on the entity's facility, as determined by USGS DOQQ imagery, and that it is on the correct street segment (block) and correct side of the street. Entities that are part of a larger institution (e.g., University Campus or Military Base) with "BLOCKFACE" precision may be located at the main entrance to the larger institution. Records with "-DOD" appended to the end of the [NAME] value are located on a military base, as defined by the Defense Installation Spatial Data Infrastructure (DISDI) military installations and military range boundaries.</horizpar>
+            </horizpa>
+        </posacc>
+        <lineage>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20070919</pubdate>
+                        <title>Jewish Synagogues</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20070919</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>Jewish Synagogues</srccitea>
+                <srccontr>This was used as a source for Jewish Synagogues in the United States.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20080101</pubdate>
+                        <title>TGS Research</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>onLine</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20080101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>TGS Research</srccitea>
+                <srccontr>Data was gathered by TGS as a source for places of worship in the United States.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20071206</pubdate>
+                        <title>Roman Catholic Churches In Large Cities D2 of 2</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20071206</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>Roman Catholic Churches In Large Cities D2 of 2</srccitea>
+                <srccontr>This was used as a source for Roman Catholic Churches In Large Cities in the United States.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20071231</pubdate>
+                        <title>Large Protestant Churches D2 of 2</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20071231</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>Large Protestant Churches D2 of 2</srccitea>
+                <srccontr>This was used as a source for Protestant Churches in the United States.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20080404</pubdate>
+                        <title>Places of Worship Q108</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20080404</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>Places of Worship Q108</srccitea>
+                <srccontr>The basic attribution (name, address, city, state, zip code, and telephone number) came from this dataset unless the entity was updated by TGS during Q409 processing.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20060101</pubdate>
+                        <title>NAVSTREETS</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>CD-ROM</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20060101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>NAVSTREETS</srccitea>
+                <srccontr>This version of NAVTEQ streets was used as a reference in the automatic geocoding and manual geolocating of entities during Q108 processing.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20080101</pubdate>
+                        <title>NAVSTREETS</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>CD-ROM</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20080101</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>NAVSTREETS</srccitea>
+                <srccontr>This version of NAVTEQ streets was used as a reference for automatic shifting of entities that were previously manually geocoded and for the automatic geocoding and manual geolocating of entities during Q409 processing.</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20071227</pubdate>
+                        <title>Mosques 2007 D2 of 2</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srctime>
+                    <timeinfo>
+                        <sngdate>
+                            <caldate>20071227</caldate>
+                        </sngdate>
+                    </timeinfo>
+                    <srccurr>publication date</srccurr>
+                </srctime>
+                <srccitea>Mosques 2007 D2 of 2</srccitea>
+                <srccontr>This was used as a source for Mosques in the United States.</srccontr>
+            </srcinfo>
+            <procstep>
+                <procdesc>1) On 08/07/2007, TGS ceased making phone calls to verify information about religious locations. Therefore, most entities in this dataset were verified using alternative reference sources such as topographic maps, parcel maps, various sources of imagery, and internet research. The [CONTHOW] (contact how) value for these entities has been set to "ALT REF". 2) NAICS Codes and NAICS Descriptions were assigned based on the entity name, web research, and the type of data sources that were used to create the database. 3) Four (4) digit United States Postal Service (USPS) zip code extensions w ere assigned based on the USPS Address Information System (AIS). 4) County names and FIPS Codes were assigned through a spatial join. 5) All text fields were set to upper case. 6) Leading and trailing spaces were trimmed from all text fields. These spaces can interfere with some database queries. 7) Non printable and diacritic characters were removed from all text fields. These values have been found to prevent data from being loaded into some spatial database engines.</procdesc>
+                <procdate>20091016</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>TechniGraphics, Inc.</cntorg>
+                            <cntper>Nicole Hackworth</cntper>
+                        </cntorgp>
+                        <cntpos>Production Manager</cntpos>
+                        <cntaddr>
+                            <addrtype>mailing and physical</addrtype>
+                            <address>2000 Noble Drive</address>
+                            <city>Wooster</city>
+                            <state>Ohio</state>
+                            <postal>44691</postal>
+                            <country>US</country>
+                        </cntaddr>
+                        <cntvoice>330-263-6222</cntvoice>
+                        <cntemail>nicole.hackworth@tgstech.com</cntemail>
+                        <hours>Monday - Friday 0800 - 1700 EST</hours>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+        </lineage>
+    </dataqual>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>Entity point</sdtstype>
+                <ptvctcnt>216</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>Places of Worship in New Hampshire</enttypl>
+                <enttypd>The Places of Worship dataset is composed of any type of building or portion of a building that is used, constructed, designed, or adapted to be used as a place for religious and spiritual activities. These facilities include, but are not limited to, the following types: chapels, churches, mosques, shrines, synagogues, and temples.</enttypd>
+                <enttypds>TGS</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>ADDRESS2</attrlabl>
+                <attrdef>Location within physical address, e.g., floor, suite, building. In some instances, the address found per web research did not correspond with NAVTEQ streets because 911 addressing was taking place in the area. For these entities, the verified address was moved to [ADDRESS2], and the [ADDRESS] is the NAVTEQ street to which the entity is linked.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SECCLASS</attrlabl>
+                <attrdef>Security classification of feature.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>UNCLASSIFIED</edomv>
+                                                						
+                        
+                        <edomvd>Entity is unclassified.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>NAME</attrlabl>
+                <attrdef>Name of entity.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>STATE_ID</attrlabl>
+                <attrdef>State Places of Worship Data ID. For states that contributed data, this field is populated with the unique ID used by the state to track Places of Worship. For data obtained through TGS research, this is sometimes used for internal purposes.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>PHONELOC</attrlabl>
+                <attrdef>Indicates whether the phone number in the [TELEPHONE] field rings to the actual location of the entity.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>&lt;BLANK&gt;</edomv>
+                                                						
+                        
+                        <edomvd>Unknown - It is not known if the entity's phone number rings to the entity's location.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>YES</edomv>
+                                                						
+                        
+                        <edomvd>Phone number rings to the actual entity location.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>NO</edomv>
+                                                						
+                        
+                        <edomvd>Phone number does not ring to the actual entity location. It may ring to an administrative office or central location.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>QC_QA</attrlabl>
+                <attrdef>Organization that performed Quality Control/Quality Assurance on the record.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>TGS</edomv>
+                                                						
+                        
+                        <edomvd>TGS has performed Quality Control/Quality Assurance on the entity record.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GEOPREC</attrlabl>
+                <attrdef>Geocoding precision.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>BLOCKFACE</edomv>
+                                                						
+                        
+                        <edomvd>Entity is geocoded to correct block and correct side of street per street data indicated by [ST_VENDOR] and [ST_VERSION].</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>ONENTITY</edomv>
+                                                						
+                        
+                        <edomvd>Entity is geocoded on entity rooftop per aerial imagery (in most cases USGS DOQQs).</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Y</attrlabl>
+                <attrdef>Latitude in WGS 84 Decimal Degrees.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <rdom>
+                                                						
+                        
+                        <rdommin>-90</rdommin>
+                                                						
+                        
+                        <rdommax>90</rdommax>
+                                                						
+                        
+                        <attrunit>WGS 84 Decimal Degrees</attrunit>
+                                                					
+                    
+                    </rdom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>PROT</attrlabl>
+                <attrdef>Indicates whether or not the place of worship holds Protestant religious services. These values were determined in part by the source data and also by technicians during processing.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>N</edomv>
+                                                						
+                        
+                        <edomvd>The place of worship does not hold Protestant religious services.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>Y</edomv>
+                                                						
+                        
+                        <edomvd>The place of worship holds Protestant religious services.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CATH</attrlabl>
+                <attrdef>Indicates whether or not the place of worship holds Catholic Mass. These values were determined in part by the source data and also by technicians during processing.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>Y</edomv>
+                                                						
+                        
+                        <edomvd>The place of worship holds Catholic Mass.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>N</edomv>
+                                                						
+                        
+                        <edomvd>The place of worship does not hold Catholic Mass.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ATTENDANCE</attrlabl>
+                <attrdef>The average number of service attendees. The values for this field were provided by individual sources and TGS did not verify these values.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Numeric</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LOC_TYPE</attrlabl>
+                <attrdef>Indicates the type of building used for the place of worship. The values for this field were provided by individual sources and TGS did not verify these values.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SUBTYPE</attrlabl>
+                <attrdef>The primary religion practiced at the place of worship. The values in this field were assigned by TGS based on the source of the entities gathered in each dataset. TGS added records were populated after processing by using the [NAME] field.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>MUSLIM</edomv>
+                                                						
+                        
+                        <edomvd>The primary religion is Islam.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>OTHER</edomv>
+                                                						
+                        
+                        <edomvd>Either the primary religion does not fall under one of the defined subtypes, or the location is not used by nor belongs to one particular religion, such as a place of worship on a military base or at an airport.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>HINDU</edomv>
+                                                						
+                        
+                        <edomvd>The primary religion is Hinduism.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>BUDDHIST</edomv>
+                                                						
+                        
+                        <edomvd>The primary religion is Buddhism.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>CHRISTIAN</edomv>
+                                                						
+                        
+                        <edomvd>The primary religion is Christianity.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>JUDAIC</edomv>
+                                                						
+                        
+                        <edomvd>The primary religion is Judaism.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>DIRECTIONS</attrlabl>
+                <attrdef>Directions to entity location, or a description of the entity's location or status.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>EMERGTITLE</attrlabl>
+                <attrdef>Title of person or name of office for emergency point of contact.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GEOLINKID</attrlabl>
+                <attrdef>Link ID for the street segment to which the entity was geocoded. Refer to the [ST_VENDOR] and [ST_VERSION] fields for the street vendor and version that was used to geocode the entity.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>NAICSDESCR</attrlabl>
+                <attrdef>NAICS (North American Industry Classification System) Description for entity. The "Index Entries" that appear on the NAICS webpage (http://www.census.gov/epcd/www/naics.html) are being used to populate this attribute as opposed to the "NAICS Title". While there is a one to one correspondence between NAICS Codes and "NAICS Titles", there is a one to many relationship between NAICS Codes and the "Index Entries". By using the "Index Entries", we have placed the entities that make up this layer into more specific categories; however, the user of this data should be aware that this was not the intended purpose of these "Index Entries". The "Index Entries" were intended as a way to search the NAICS database and as a way of enumerating ways in which establishments falling under the given NAICS Code may be named. Thus, there are often two or more "Index Entries" that are synonyms, for example: "Prisons" and "Penitentiaries". In cases like this, we have standardized on one "Index Entry". NAICS Descriptions (and NAICS Codes) have been assigned based upon the entity's primary function, regardless of the function that qualified it to be included in this dataset.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>CHURCHES</edomv>
+                                                						
+                        
+                        <edomvd>CHURCHES - [NAICS Code 813110]: Establishments primarily engaged in administering an organized religion or promoting religious activities of the Christian religion.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>RETREAT HOUSES, RELIGIOUS</edomv>
+                                                						
+                        
+                        <edomvd>RETREAT HOUSES, RELIGIOUS - [NAICS Code 813110]: Establishments primarily engaged in administering an organized religion or promoting religious activities in an informal setting.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>CONVENTS (EXCEPT SCHOOLS)</edomv>
+                                                						
+                        
+                        <edomvd>CONVENTS (EXCEPT SCHOOLS) - [NAICS Code 813110]: Establishments that primarily serve as a religious residence for nuns.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>SHRINES, RELIGIOUS</edomv>
+                                                						
+                        
+                        <edomvd>SHRINES, RELIGIOUS - [NAICS Code 813110]: Locations established for the purpose of veneration or worship of a specific saint, martyr, or deity.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>MOSQUES, RELIGIOUS</edomv>
+                                                						
+                        
+                        <edomvd>MOSQUES, RELIGIOUS - [NAICS Code 813110]: Establishments primarily engaged in administering an organized religion or promoting religious activities of the Muslim religion.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>TEMPLES, RELIGIOUS</edomv>
+                                                						
+                        
+                        <edomvd>TEMPLES, RELIGIOUS - [NAICS Code 813110]: Establishments primarily engaged in administering an organized religion or promoting religious activities of the Buddhist, Hindu, or Sikh religions.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>SYNAGOGUES</edomv>
+                                                						
+                        
+                        <edomvd>SYNAGOGUES - [NAICS Code 813110]: Establishments primarily engaged in administering an organized religion or promoting religious activities of the Judaic religion.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>PLACES OF WORSHIP</edomv>
+                                                						
+                        
+                        <edomvd>PLACES OF WORSHIP - [NAICS Code 813110]: Establishments primarily engaged in administering an organized religion or promoting religious activities.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>MONASTERIES (EXCEPT SCHOOLS)</edomv>
+                                                						
+                        
+                        <edomvd>MONASTERIES (EXCEPT SCHOOLS) - [NAICS Code 813110]: Establishments that primarily serve as a religious residence for monks.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GEODATE</attrlabl>
+                <attrdef>Date entity was geocoded by TGS.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Date</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GEOHOW</attrlabl>
+                <attrdef>Method by which entity was geocoded.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>ADJUSTED</edomv>
+                                                						
+                        
+                        <edomvd>Entity was shifted by TGS to an updated set of NAVTEQ streets. This only applies if the entity was manually geocoded by TGS to a previous version of NAVTEQ streets.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>MANUAL</edomv>
+                                                						
+                        
+                        <edomvd>Entity was manually geocoded.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ZIP</attrlabl>
+                <attrdef>Five (5) digit USPS zip code for entity's physical location.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <codesetd>
+                                                						
+                        
+                        <codesetn>USPS Address Information System - Domain is further restricted by only allowing physical (non PO Box) zip codes.</codesetn>
+                                                						
+                        
+                        <codesets>United States Postal Service</codesets>
+                                                					
+                    
+                    </codesetd>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ST_VERSION</attrlabl>
+                <attrdef>Indicates the year and quarter of streets used for geocoding.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>2006Q4</edomv>
+                                                						
+                        
+                        <edomvd>4th Quarter 2006 NAVTEQ street data was used for geocoding.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>2008Q1</edomv>
+                                                						
+                        
+                        <edomvd>1st Quarter 2008 NAVTEQ street data was used for geocoding.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>NAICSCODE</attrlabl>
+                <attrdef>NAICS (North American Industry Classification System) Code for entity. NAICS Codes (and NAICS Descriptions) have been assigned based upon the entity's primary function, regardless of if that is the function that qualified it to be included in this dataset.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <codesetd>
+                                                						
+                        
+                        <codesetn>North American Industry Classification System (NAICS 2007)</codesetn>
+                                                						
+                        
+                        <codesets>US Census Bureau - &lt;http://www.census.gov/epcd/www/naics.html&gt;</codesets>
+                                                					
+                    
+                    </codesetd>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CONTDATE</attrlabl>
+                <attrdef>Date entity was contacted by TGS.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Date</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>EMERGEXT</attrlabl>
+                <attrdef>Telephone extension for emergency point of contact.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FIPS</attrlabl>
+                <attrdef>Five (5) digit FIPS (Federal Information Processing Standards) Code for the County where entity is located. The first two (2) digits represent the state and the last three (3) digits identify the county within the state.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <codesetd>
+                                                						
+                        
+                        <codesetn>Federal Information Processing Standards Publications - Counties and Equivalent Entities of the U.S., Its Possessions, and Associated Areas</codesetn>
+                                                						
+                        
+                        <codesets>National Institute of Standards and Technology (NIST) http://www.itl.nist.gov/fipspubs/co-codes/states.txt</codesets>
+                                                					
+                    
+                    </codesetd>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CITY</attrlabl>
+                <attrdef>The name of the city associated with the entity's physical address. For physical addresses that the U.S. Postal Service (USPS) delivers to, this should be a "city" acceptable to the USPS as defined in their Address Information System (AIS). Sometimes the USPS does not deliver mail to a physical address but recognizes the location (i.e., they list the location as "undeliverable"). The cities associated with these locations are acceptable. In some cases, the USPS does not recognize individual physical addresses in a city, rather, they list the city as having "General Delivery". In these cases, the city and associated zip code are acceptable (the entity's [ADDRESS] field will contain a street address, not "general delivery"). The entity may not actually be located within the city limits of the "city" specified in its [CITY] field. Instead, it may actually be located within the city limits of another city. In some cases, the "city" that appears in this field may not even be a city in an administrative sense, but it is still an acceptable "city" to the USPS. An example of this is "Notre Dame, IN". There is no city in Indiana called "Notre Dame", but this is considered an acceptable city by the USPS for any delivery going to the University of Notre Dame which is actually located in the city of South Bend. "Notre Dame", like most USPS cities, is an easily recognized place, and it gives the user of the data a good general idea of where the entity is located (if the entity is located in a small municipality, the USPS "city" may be more recognizable than the name of the municipality), and it would be part of the address one would use to send a shipment to the entity's location. Using the USPS acceptable "city" also allows someone to do a logical consistency check between the zip code and the city by using the USPS AIS. Sometimes an entity may report a city that is not accepted by the USPS, and although TGS has tried to replace those cities with an acceptable alternative, some of them may remain in this dataset.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>STATE</attrlabl>
+                <attrdef>Two (2) character abbreviation for state associated with the entity's physical address. In almost all cases, this is the same as the state where the entity has been depicted geospatially. However, there are cases, particularly where an entity is part of a larger facility that cuts across state lines, where the entity's location may be depicted in a state other than the one indicated in this field. Also, the state in which an entity appears to be located may change depending on the scale of the state boundary theme being used.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <codesetd>
+                                                						
+                        
+                        <codesetn>Official USPS Abbreviations - State Abbreviations</codesetn>
+                                                						
+                        
+                        <codesets>United States Postal Service http://www.usps.com/ncsc/lookups/usps_abbreviations.html</codesets>
+                                                					
+                    
+                    </codesetd>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>CONTHOW</attrlabl>
+                <attrdef>Method by which entity was contacted.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>PHONE</edomv>
+                                                						
+                        
+                        <edomvd>Entity was contacted by phone.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>ALT REF</edomv>
+                                                						
+                        
+                        <edomvd>Geospatial reference information obtained from local authorities, e.g., downloadable parcel maps, 911 streets, and shape files.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>COUNTY</attrlabl>
+                <attrdef>County name where entity is located.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <codesetd>
+                                                						
+                        
+                        <codesetn>Geographic Names Information System (GNIS)</codesetn>
+                                                						
+                        
+                        <codesets>US Department of the Interior - US Geologic Survey</codesets>
+                                                					
+                    
+                    </codesetd>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>X</attrlabl>
+                <attrdef>Longitude in WGS 84 Decimal Degrees.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <rdom>
+                                                						
+                        
+                        <rdommin>-180</rdommin>
+                                                						
+                        
+                        <rdommax>180</rdommax>
+                                                						
+                        
+                        <attrunit>WGS 84 Decimal Degrees</attrunit>
+                                                					
+                    
+                    </rdom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>MEMBERS</attrlabl>
+                <attrdef>The number of members, listed either as individuals or as families. The values for this field were provided by individual sources and TGS did not verify these values.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>EMERGTEL</attrlabl>
+                <attrdef>Ten (10) digit telephone number of emergency point of contact formatted as nnn-nnn-nnnn. All alphabetic characters have been translated to the corresponding numeric digit.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Phone numbers, including area code, formatted as nnn-nnn-nnnn. A list of valid area code and exchange combinations can be found at http://www.nanpa.com</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ST_VENDOR</attrlabl>
+                <attrdef>Indicates name of vendor providing original street data used for geocoding.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>NAVTEQ</edomv>
+                                                						
+                        
+                        <edomvd>NAVTEQ streets were used for geocoding.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>TGS</edomv>
+                                                						
+                        
+                        <edomvd>TGS drew in a new street segment that does not exist in the file supplied by NAVTEQ.</edomvd>
+                                                						
+                        
+                        <edomvds>TGS</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>DENOM</attrlabl>
+                <attrdef>Indicates the denomination associated with the primary religion practiced at the place of worship. Some values in this field were provided by individual sources. Other values in this field were assigned by TGS, where applicable, based on the source of the entities gathered in each dataset.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ID</attrlabl>
+                <attrdef>Unique identifier for feature.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>TELEPHONE</attrlabl>
+                <attrdef>Ten (10) digit telephone number for entity formatted as nnn-nnn-nnnn.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Phone numbers formatted as nnn-nnn-nnnn. Only numeric digits are used. The area code and exchange must form a valid combination. A list of valid area code and exchange combinations can be obtained from &lt;http://www.nanpa.com&gt;</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ZIPP4</attrlabl>
+                <attrdef>Four (4) digit USPS zip code extension. These values are automatically assigned using the entity's physical address and USPS address information system (AIS) data.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <codesetd>
+                                                						
+                        
+                        <codesetn>USPS Address Information System (AIS) - ZIP9</codesetn>
+                                                						
+                        
+                        <codesets>United States Postal Service</codesets>
+                                                					
+                    
+                    </codesetd>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ADDRESS</attrlabl>
+                <attrdef>Physical street address for entity. "PO Box", "General Delivery", "Rural Route", and "Highway Contract" addresses are not considered physical addresses and should not appear in this field. Some areas do not have regular city style addressing, so entities in those areas may not have a street number. In such cases, the name of the road on which they are located is listed in this field. Some rural areas may not have named roads. In these rare cases, this field will be blank.</attrdef>
+                <attrdefs>TGS</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Text</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+        </detailed>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Complex Systems Research Center, University of New Hampshire</cntorg>
+                    <cntper>GRANIT Database Manager</cntper>
+                </cntorgp>
+                <cntpos>GRANIT Database Manager</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>Morse Hall, University of New Hampshire</address>
+                    <city>Durham</city>
+                    <state>NH</state>
+                    <postal>03824</postal>
+                </cntaddr>
+                <cntvoice>603-862-1792</cntvoice>
+                <cntfax>603-862-0188</cntfax>
+                <cntemail>granit@unh.edu</cntemail>
+                <hours>8:30AM - 5 PM, EST</hours>
+            </cntinfo>
+        </distrib>
+        <distliab>See access and use constraints information.</distliab>
+        <stdorder>
+            <digform>
+                <digtinfo>
+                    <formname>ESRI Shapefile</formname>
+                </digtinfo>
+            </digform>
+            <fees>No charge when downloaded from website. Cost of reproduction for provision on CD/DVD or other media.</fees>
+        </stdorder>
+    </distinfo>
+    <metainfo>
+        <metd>20091016</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>TechniGraphics, Inc.</cntorg>
+                    <cntper>Mike Thompson</cntper>
+                </cntorgp>
+                <cntpos>Director of Research and Development</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>3351 Eastbrook Drive</address>
+                    <city>Fort Collins</city>
+                    <state>CO</state>
+                    <postal>80525</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>970-224-4996</cntvoice>
+                <cntfax>970-224-3001</cntfax>
+                <cntemail>mike.thompson@tgstech.com</cntemail>
+                <hours>Monday - Friday 0800 - 1700 MST</hours>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
