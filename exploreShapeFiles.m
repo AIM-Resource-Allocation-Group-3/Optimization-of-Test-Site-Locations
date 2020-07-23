@@ -38,3 +38,11 @@ for i = 1:size(numTracts,2)
 end
 plot(Cx,Cy,'.g','MarkerSize',10)
 hold off
+
+%%
+[X,Y] = boundingbox(polgon);
+[Adj,obj] = make_graph(6,6,X(1),Y(1),X(2),Y(2));
+figure
+mapshow(S)
+hold on
+plot(obj)
