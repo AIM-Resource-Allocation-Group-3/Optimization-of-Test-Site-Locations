@@ -4,12 +4,15 @@ m = 5; n = 5;
 beta = 0.6; %infection coeff.
 gamma = 0.2;  %recovery coeff.
 tau = 0.8;   %movement b/t nodes coeff.
+lambda1 = 0.1;
+lambda2 = 0.2;
 % Make graph
 [A] = make_graph_unif(m);
 H = graph(A);
 % Assign attributes to nodes
 dist = 3;possTest = [];
 for i = 1:m*n
+    H.Nodes.Quarentine(i) = 0;
     if mod(i,dist) == 0
         H.Nodes.Suceptible(i) = floor(100.*(rand(1,1)+1))';
         H.Nodes.Infected(i) = floor(10.*(rand(1,1)+1))';
@@ -89,9 +92,8 @@ didt = zeros(m*n,1); dsdt = zeros(m*n,1); Ival_ind = [];
 
 %New Model 
 dqdt = zeros(m*n,1)
-pop_ntempsite = zeros(size(H.Nodes.Infected));
-pop_dtempsite = zeros(size(H.Nodes.Infected));
-Quar_sto = zeros(size(H.Nodes.Infected),14)
+pop_ntempsite = zeros(size(pop_possneib));
+pop_dtempsite = zeros(size(pop_possneib));
 for t = 1:numsteps
     % Calculate Infected,Suceptible neighbors
     for i = 1:m*n
@@ -107,10 +109,10 @@ for t = 1:numsteps
     P = H.Nodes.Suceptible + H.Nodes.Infected + tau.*(I_neigh + S_neigh);
 
     %Solving the ODE
-    dsdt(popNodes) = -beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) + gamma.*H.Nodes.Infected(popNodes) - tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) + Quar_sto(:,:,i);
-    dqdt(popNodes) = H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
-        H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist);
-    didt(popNodes) = beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) - gamma.*H.Nodes.Infected(popNodes) + tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) - dqdt(popNodes);
+    dsdt(popNodes) = -beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) + gamma.*H.Nodes.Infected(popNodes) - tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) 
+    dqdt(popNodes) = lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
+        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist);
+    didt(popNodes) = beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) - gamma.*H.Nodes.Infected(popNodes) + tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) %- dqdt(popNodes);
    
     %Explanation of dQdt
         %multiplies number of infected at each node by number of fixed
@@ -124,7 +126,7 @@ for t = 1:numsteps
     H.Nodes.Quarentine = H.Nodes.Quarentine + dqdt.*dt
     
     
-    Quar_sto = [Quar_sto, H.Nodes.quarentine]
+  
     I_tot = [I_tot, sum(H.Nodes.Infected)];
     S_tot = [S_tot, sum(H.Nodes.Suceptible)];
     
