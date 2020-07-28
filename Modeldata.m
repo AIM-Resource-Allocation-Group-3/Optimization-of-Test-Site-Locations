@@ -4,10 +4,30 @@
 %   2. possTest - possible pop-up test sites (right now this is places
 %      of worship until we get more data)
 %   3. fixedTest - fixed testing locations (right now this is hospitals)
-S = shaperead('Data/tl_2019_33_bg/tl_2019_33_bg.shp');
+S = shaperead('Data/tl_2016_33_tract/tl_2016_33_tract.shp');
 County = shaperead('Data/NH_Population_Density-shp/USA_Population_Density.shp');
 PlacesOfWorship = shaperead('Data/New_Hampshire_Places_of_Worship-shp/New_Hampshire_Places_of_Worship.shp');
 Hospitals = shaperead('Data/New_Hampshire_Hospitals-shp/9c19a9cd-6911-4892-8c7b-ea3639c50f76202049-1-j3z5s6.y65y.shp');
+
+% Population data for census tracts
+[NUM,TXT,RAW] = xlsread('Data/TractPopulation.csv');
+geoidString = string(cell2mat(RAW(2:end,2)));
+geoid = erase(geoidString,"14000US");
+pop = cell2mat(RAW(2:end,3));
+
+% To create new field for pop
+C = num2cell(zeros(1,length(S)));
+[S(:).POP] = deal(C{:});
+
+% Assign pop to corresponding geoid
+for i = 1:length(S)
+    for j = 1:length(S)
+        if strcmp(geoid(i),string(S(j).GEOID)) == 1
+            S(j).POP = pop(i);
+            break
+        end
+    end
+end
 
 % Find centroids of census tracts
 numTracts = struct2cell(S);
@@ -167,19 +187,19 @@ end
 sz = size(popPoints,1);
 TotPop = zeros(sz,1);
 % for i = 1:sz
-%     TotPop(i) = S(i).TOTPOP10;
+%     TotPop(i) = S(i).POP;
 % end
 TotPop = floor(100.*(rand(1,sz)+1))';
-I = floor(10.*(rand(1,sz)+1))';
+I = floor(1.*(rand(1,sz)+1))';
 Sus = TotPop - I;
 Q = zeros(size(TotPop));
 %parameters
-beta = 0.6; %infection coeff.
-gamma = 0.2;  %recovery coeff.
-tau = 0.8;   %movement b/t nodes coeff.
+beta = 0.2; %infection coeff.
+gamma = 1/14;  %recovery coeff.
+tau = 0.2;   %movement b/t nodes coeff.
 
 dt = 1;
-final_time = 1;
+final_time = 20;
 numsteps = final_time/dt;
 x_tot = zeros(numsteps,1); I_indtot = zeros(numsteps,1);
 nonlinx_tot = [];
@@ -230,6 +250,7 @@ for t = 1:numsteps
     Ival_ind(t) = find(Ival == max(Ival));
 %     indI = find(H.Nodes.Infected == max(H.Nodes.Infected));
 %     I_indtot(t) = indI;
+    disp(t)
     
 for i = 1:length(popPoints)
    ntempsite = rangesearch(indnonlinx,popPoints(i),dist); dtemp = nearest(indnonlinx,popPoints(i),2*dist); 
@@ -248,18 +269,45 @@ hold on
 plot(S_tot,'b')
 hold off
 
+
 % Look at nodes assigned for objective function and Infected number
 disp((nonlinx_tot))
 disp((Ival_ind))
 
 
 %%
-figure
-mapshow(County)
-hold on
-plot(possTestPoints(:,1),possTestPoints(:,2),'.r')
-plot(popPoints(:,1),popPoints(:,2),'.g')
-plot(fixedTestPoints(:,1),fixedTestPoints(:,2),'.k')
-plot(possTestPoints(indnonlinx,1),possTestPoints(indnonlinx,2),'+r')
-plot(possTestPoints(Ival_ind,1),possTestPoints(Ival_ind,2),'+b')
-hold off
+picWidth = 0.05;
+a = VideoWriter('20dayMovie.avi');
+a.FrameRate = 1;
+a.Quality = 100;
+% a.Width = 480;
+% a.Height = 640;
+open(a)
+for j = 1:numsteps
+    figure('Renderer', 'painters', 'Position', [10 10 900 600])
+    mapshow(County)
+    hold on
+    plot(possTestPoints(:,1),possTestPoints(:,2),'.r','MarkerSize',8)
+    plot(popPoints(:,1),popPoints(:,2),'.g','MarkerSize',8)
+    plot(fixedTestPoints(:,1),fixedTestPoints(:,2),'.k','MarkerSize',8)
+    for x = 1:size(nonlinx_tot,1)
+        
+        if nonlinx_tot(x,j) == 0
+            break
+        else
+            ih = image(imread('car.png'));
+            ih.XData = [possTestPoints(nonlinx_tot(x,j),1)-picWidth,possTestPoints(nonlinx_tot(x,j),1)+picWidth];
+            ih.YData = [possTestPoints(nonlinx_tot(x,j),2)+picWidth,possTestPoints(nonlinx_tot(x,j),2)-picWidth];
+        end
+%     plot(possTestPoints(indnonlinx(:,j),1),possTestPoints(indnonlinx(:,j),2),'*r','MarkerSize',8)
+    end
+    drawnow
+    hold off
+%     axis([-72.06 -71.26 42.71 43.2])
+    M(j) = getframe;
+    writeVideo(a,M(j));
+end
+close(a)
+% movie(M)
+
+
