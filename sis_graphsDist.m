@@ -4,8 +4,8 @@ m = 5; n = 5;       %Size of mesh
 beta = 0.6;         %infection rate
 gamma = 0.2;        %recovery rate
 tau = 0.8;          %movement b/t nodes coeff.
-lambda1 = 0.4;      %Testing rate for primary neighbor sites
-lambda2 = 0.2;      %Testing rate for secondary neighbor sites
+lambda1 = 0;      %Testing rate for primary neighbor sites
+lambda2 = 0;      %Testing rate for secondary neighbor sites
 
 
 % Make graph
@@ -13,7 +13,7 @@ lambda2 = 0.2;      %Testing rate for secondary neighbor sites
 H = graph(A);
 % Assign attributes to nodes
 
-dist = 3;possTest = [];
+dist = 3;possTest = [];                                         %List of nodes where popup sites can be
 for i = 1:m*n
     H.Nodes.Quarentine(i) = 0;
     if mod(i,dist) == 0
@@ -121,65 +121,71 @@ for t = 1:numsteps
     for i = 1:m*n
         for j = 1:m*n
             if A(i,j) ~= 0
-                I_neigh(i) = I_neigh(i) + H.Nodes.Infected(j);
-                S_neigh(i) = S_neigh(i) + H.Nodes.Suceptible(j);
+                I_neigh(i) = I_neigh(i) + H.Nodes.Infected(j);              %I_neigh(i) is the sum of all infected neighbors of node i
+                S_neigh(i) = S_neigh(i) + H.Nodes.Suceptible(j);            %S_neigh(i) is the sum of all suceptible neighbors of node i
             end  
         end
     end
     disp(I_neigh)
     % total pop at a node
-    P = H.Nodes.Suceptible + H.Nodes.Infected + tau.*(I_neigh + S_neigh);
+    P = H.Nodes.Suceptible + H.Nodes.Infected + tau.*(I_neigh + S_neigh);   %P is the total number of people on a node during 1 timestep
 
     %Solving the ODE
-    dsdt(popNodes) = -beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) + gamma.*H.Nodes.Infected(popNodes) - tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes)...
-        + (1/7)*H.Nodes.Quarentine(popNodes) ;
-    didt(popNodes) =  beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) - gamma.*H.Nodes.Infected(popNodes) + tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) ...
- -(lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
-        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist));
-    dqdt(popNodes) = - (1/7).*H.Nodes.Quarentine(popNodes)...
-    +lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
-        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist)...
+    dsdt(popNodes) = -beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) ...                 %Infection rate
+        + gamma.*H.Nodes.Infected(popNodes) - ...                                                                       %Recovery Rate
+        tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes)...                                          %Visitors being Infected on node
+        + (1/7)*H.Nodes.Quarentine(popNodes);                                                                           %Return from quarentine
+    
+    didt(popNodes) =  beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes)...                                 
+        - gamma.*H.Nodes.Infected(popNodes)...                                                                          
+        + tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) ...                                       
+        -(lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist...                                     %Quarentine rate after visiting fixed site < dist away
+        + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...                             %Quarentine rate after visiting fixed seit in (dist, 2dist) away
+        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist ...                                             %Quarentine rate after visiting popup site < dist away
+        + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist));                                         %Quarentine rate after visitng popup site in (dist,2dist) away
+    
+    dqdt(popNodes) = - (1/7).*H.Nodes.Quarentine(popNodes)...                                                           
+        +lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist...                                      
+        + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
+        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist ...
+        + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist)...
        
   
    
     %Explanation of dQdt
-        %multiplies number of infected at each node by number of fixed
-        %sites, and divides by radius. Logical converts pop_fixneib to a
-        %binary matrix and sum(...,2) adds along rows
-        
+        % Takes populations and multiplies by number of fixed or popup
+        % sites and scales by lambda1 or lambda2
         %no capacity, model assumes testing capacity <<< infected
-        %
+        
+     %Updating model   
     H.Nodes.Infected = H.Nodes.Infected + didt.*dt;
     H.Nodes.Suceptible = H.Nodes.Suceptible + dsdt.*dt;
     H.Nodes.Quarentine = H.Nodes.Quarentine + dqdt.*dt
     
     
-  
+    %Updating vector of totals
     I_tot = [I_tot, sum(H.Nodes.Infected)];
     S_tot = [S_tot, sum(H.Nodes.Suceptible)];
     Q_tot = [Q_tot, sum(H.Nodes.Quarentine)];
     
     % nonlinear optimization
-    [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(H.Nodes.Infected,didt,neib,dneib,possTest,dist,fixneib,fixdneib,possneib,possdneib);
+    [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(H.Nodes.Infected,didt,neib,...
+                                                            dneib,possTest,dist,fixneib,...
+                                                            fixdneib,possneib,possdneib);
     indnonlinx = find(nonlinx);
-%     if size(indnonlinx,2) == 0
-%         nonlinx_tot(t) = 0;
-%     else
-%         nonlinx_tot(t) = indnonlinx;
-%     end
+
+    
+    %Can Delete?
     Ival = [];
     for node = 1:length(possTest)
         nnode = neib(node,:); nnode = nnode(nnode~=0);
         dnode = dneib(node,:); dnode = dnode(dnode~=0);
         Ival = [Ival,((didt(nnode)'*H.Nodes.Infected(nnode))/dist + (didt(dnode)'*H.Nodes.Infected(dnode))/(2*dist))];
     end
-  %  Ival_ind(t) = find(Ival == max(Ival)); 
-%     indI = find(H.Nodes.Infected == max(H.Nodes.Infected));
-%     I_indtot(t) = indI;
 
 
-%pop_ntempsite: popup sites <= dist from pop centers
-%pop_dtempsite: popup sites <= 2dist from popcenters
+%pop_ntempsite: popup sites < dist from pop centers
+%pop_dtempsite: popup sites < 2dist from popcenters
 for i = 1:length(popNodes)
    ntemp = nearest(H,popNodes(node),dist); dtemp = nearest(H,popNodes(node),2*dist); 
    ntempsite = intersect(ntemp,indnonlinx); dtempsite = intersect(dtemp,indnonlinx);
@@ -200,10 +206,9 @@ hold on
 plot(Q_tot,'*')
 xlabel('Days');
 ylabel('Individuals');
-title('\beta = 0.6, \gamma = 0.2 N = 5')
+title('\beta = 0.6, \gamma = 0.2  N = 5')
 legend('Infected', 'Suceptible', 'Quarentine')
 
 % Look at nodes assigned for objective function and Infected number
 %disp(possTest(nonlinx_tot))
 %disp(possTest(Ival_ind))
-
