@@ -172,6 +172,7 @@ TotPop = zeros(sz,1);
 TotPop = floor(100.*(rand(1,sz)+1))';
 I = floor(10.*(rand(1,sz)+1))';
 Sus = TotPop - I;
+Q = zeros(size(TotPop));
 %parameters
 beta = 0.6; %infection coeff.
 gamma = 0.2;  %recovery coeff.
@@ -183,8 +184,8 @@ numsteps = final_time/dt;
 x_tot = zeros(numsteps,1); I_indtot = zeros(numsteps,1);
 nonlinx_tot = [];
 I_neigh = zeros(sz,1); S_neigh = zeros(sz,1);
-didt = zeros(sz,1); dsdt = zeros(sz,1); Ival_ind = []; I_tot = []; S_tot = [];
-
+didt = zeros(sz,1); dsdt = zeros(sz,1); dqdt = zeros(sz,1); Ival_ind = []; I_tot = []; S_tot = []; q_tot = [];
+pop_ntempsite = zeros(sz,1); pop_dtempsite = zeros(sz,1);
 for t = 1:numsteps
     
     for i = 1:sz
@@ -198,13 +199,19 @@ for t = 1:numsteps
     P = TotPop + tau.*(I_neigh + S_neigh);
 
     %Solving the ODE
-    dsdt = -beta.*(I.*Sus)./P + gamma.*I - tau.*(I_neigh.*Sus)./P;
-    didt = beta.*(I.*Sus)./P - gamma.*I + tau.*(I_neigh.*Sus)./P;
+    dsdt = -beta.*(I.*Sus)./P + gamma.*I - tau.*(I_neigh.*Sus)./P + (1/7).*Q_tot;
+    didt = beta.*(I.*Sus)./P - gamma.*I + tau.*(I_neigh.*Sus)./P - ...
+        (lambda1.*TotPop.*logical(fixneibIdx)./fixD + lambda2.*TotPop.*logical(fixedneibId)./fixdD + ...
+        lambda1.*TotPop.*logical(sum(pop_ntempsite,2))./fixD + lambda2.*TotPop.*logical(sum(pop_dtempsite,2)));
+    dqdt = lambda1.*TotPop.*logical(fixneibIdx)./fixD + lambda2.*TotPop.*logical(fixedneibId)./fixdD + ...
+        lambda1.*TotPop.*logical(sum(pop_ntempsite,2))./fixD + lambda2.*TotPop.*logical(sum(pop_dtempsite,2)) - (1/7).*Q_tot;
     I = I + didt.*dt;
     Sus = Sus + dsdt.*dt;
+    Q = Q + dqdt.*dt;
 
     I_tot = [I_tot, sum(I)];
     S_tot = [S_tot, sum(Sus)];
+    Q_tot = [Q_tot, sum(Q)];
     
     % nonlinear optimization
     [nonlinx,val,exitFlag,Output,pop,s] = nonlinear_opt_site_graphs(I,didt,popneib,popdneib,1:size(possTestPoints,1),dist,fixneib,fixdneib,possneib,possdneib);
@@ -224,6 +231,15 @@ for t = 1:numsteps
 %     indI = find(H.Nodes.Infected == max(H.Nodes.Infected));
 %     I_indtot(t) = indI;
     
+for i = 1:length(popPoints)
+   ntempsite = rangesearch(indnonlinx,popPoints(i),dist); dtemp = nearest(indnonlinx,popPoints(i),2*dist); 
+   dtempsite = setdiff(dtemp,ntempsite);
+   pop_ntempsite(i,1:length(ntempsite)) = ntempsite;
+   pop_dtempsite(i,1:length(dtempsite)) = dtempsite;   
+end
+
+
+
 end
 
 figure
