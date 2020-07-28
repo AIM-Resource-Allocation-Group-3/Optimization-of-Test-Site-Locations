@@ -30,8 +30,8 @@ fun = @(F) objfun(I,M,G,F,didt,neib,dneib,possTest,dist,fixneib,fixdneib,possnei
     % PlotFcn - displays plot as the optimization is working
     % MaxStallGenerations - one possible stopping criteria (looks at avg relative change)
     % MaxGerations - number of iterations before ga stops
-options = optimoptions('ga','PopulationSize',400,'PlotFcn',{@gaplotbestf,@gaplotstopping},...
-    'FunctionTolerance',10e-3,'MaxStallGenerations',15,'MaxGenerations',50,'InitialPopulationMatrix',initPop);
+options = optimoptions('ga','PopulationSize',300,'PlotFcn',{@gaplotbestf,@gaplotstopping},...
+    'FunctionTolerance',10e-3,'MaxStallGenerations',20,'MaxGenerations',50,'InitialPopulationMatrix',initPop);
 options = optimoptions(options,'UseVectorized',true);
 [x,fval,exitFlag,Output,pop,scores] = ga(fun,numPossTest,A,b,Aeq,beq,lb,ub,nonlcon,intcon,options);
 end
