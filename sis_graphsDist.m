@@ -1,21 +1,24 @@
 %% SIS model using graphs
 % Using distance to find adjacent and secondary nodes
-m = 5; n = 5;
-beta = 0.6; %infection coeff.
-gamma = 0.2;  %recovery coeff.
-tau = 0.8;   %movement b/t nodes coeff.
-lambda1 = 0.1;
-lambda2 = 0.2;
+m = 5; n = 5;       %Size of mesh
+beta = 0.6;         %infection rate
+gamma = 0.2;        %recovery rate
+tau = 0.8;          %movement b/t nodes coeff.
+lambda1 = 0.4;      %Testing rate for primary neighbor sites
+lambda2 = 0.2;      %Testing rate for secondary neighbor sites
+
+
 % Make graph
 [A] = make_graph_unif(m);
 H = graph(A);
 % Assign attributes to nodes
+
 dist = 3;possTest = [];
 for i = 1:m*n
     H.Nodes.Quarentine(i) = 0;
     if mod(i,dist) == 0
-        H.Nodes.Suceptible(i) = floor(100.*(rand(1,1)+1))';
-        H.Nodes.Infected(i) = floor(10.*(rand(1,1)+1))';
+        H.Nodes.Suceptible(i) = floor(100.*(rand(1,1)+1))';     %Number of suceptible people on each node
+        H.Nodes.Infected(i) = floor(10.*(rand(1,1)+1))';        %Number of infected people on each node
     elseif mod(i,5) == 0
         possTest = [possTest,i];
     else
@@ -24,13 +27,14 @@ for i = 1:m*n
     end
 end
 H.Nodes.Population = H.Nodes.Suceptible + H.Nodes.Infected;
-popNodes = find(H.Nodes.Suceptible);
-fixedTest = [4,8,19];
+popNodes = find(H.Nodes.Suceptible);                            %Nodes with a population on them
+fixedTest = [4,8,19];                                           %Nodes with a fixed test
 disp(H.Nodes)
 
 % For plotting S,I over time
 S_tot = sum(H.Nodes.Suceptible);
 I_tot = sum(H.Nodes.Infected);
+Q_tot = 0;
 
 %FOR POSSIBLE TEST SITES
 % Find nearest pop node within dist radius (neib)
@@ -39,11 +43,24 @@ I_tot = sum(H.Nodes.Infected);
 % Find fixed test site 2*dist away (fixdneib)
 % Find nearest poss test sites (possneib)
 % Find poss test site 2*dist away (possdneib)
+
+%   neib: For a given node that is a possible test site finds other nodes with a
+%           population within a distance dist
+%   dneib: For a given node that is a possible test site finds other nodes with a
+%           population further than dist, <2*dist
+%   fixneib: For a given node that is a possible test site finds other nodes that are
+%           a fixed testing site within a distance dist
+%   fixdneib: For a given node that is a possible test site finds other nodes that
+%           are a fixed testing site further than dist, <2*dist
+%   possneib: For a given node that is a possible test site finds other nodes that
+%           are  possible testing sites within a distance dist
+%   possdneib: For a given node that is a possible test site finds other nodes that
+%           are possible testing sites further than dist < 2*dist
 for node = 1:length(possTest)
     ntemp = nearest(H,possTest(node),dist); dtemp = nearest(H,possTest(node),2*dist);
     fixtemp = intersect(ntemp,fixedTest); fixdtemp = intersect(dtemp,fixedTest);
     posstemp = intersect(ntemp,possTest); possdtemp = intersect(dtemp,possTest);
-    ntemp = ntemp(find(H.Nodes.Population(ntemp))); %maps nearest nodes to nearest pop nodes
+    ntemp = ntemp(find(H.Nodes.Population(ntemp))); 
     fixneib(node,1:length(fixtemp)) = fixtemp; possneib(node,1:length(posstemp)) = posstemp;
     dtemp = dtemp(find(H.Nodes.Population(dtemp)));
     fixdneibdiff = setdiff(fixdtemp,fixtemp); possdneibdiff = setdiff(possdtemp,posstemp);
@@ -54,12 +71,20 @@ for node = 1:length(possTest)
     ntemp = []; dtemp = [];
 end
 
-%For POPULATIONS NODES
-%pop_fixneib nearest fixed test site <= dist
-%pop_fixdneib nearest fixed test sites  <=2dist
-%pop_possneib nearest possible test sites <= dist
-%pop_possdneib nearest possible test sites <= 2dist
-%pop_fixneib = zeros(length(popNodes));
+
+
+
+
+
+
+%   pop_fixneib: For a given node that has a population finds other nodes that are a
+%           fixed test site within a distance dist
+%   pop_fixddneib: For a given node that has a population finds other nodes that are a
+%           fixed test site further than dist, <2*dist
+%   pop_possneib: For a given node that has a population finds other nodes that are
+%           a possible testing site within a distance dist
+%   pop_possdneib: For a given node that has a population finds other nodes that
+%           are a possible testing site further than dist, <2*dist
 for node = 1:length(popNodes)   
     ntemp = nearest(H,popNodes(node),dist); dtemp = nearest(H,popNodes(node),2*dist);
     fixtemp = intersect(ntemp,fixedTest); fixdtemp = intersect(dtemp,fixedTest);
@@ -69,21 +94,18 @@ for node = 1:length(popNodes)
     dtemp = dtemp(find(H.Nodes.Population(dtemp)));
     fixdneibdiff = setdiff(fixdtemp,fixtemp); possdneibdiff = setdiff(possdtemp,posstemp);
     pop_fixdneib(node,1:length(fixdneibdiff)) = fixdneibdiff; pop_possdneib(node,1:length(possdneibdiff)) = possdneibdiff;
-%     neib(node,1:length(ntemp)) = ntemp;
-%     dtempDiff = setdiff(dtemp,ntemp);
-%     dneib(node,1:length(dtempDiff)) = dtempDiff;
     ntemp = []; dtemp = [];
 end
 
 
-pop_possTest = union(popNodes',possTest);
+pop_possTest = union(popNodes',possTest);   
 s = setdiff(1:m*n,pop_possTest);
 
 
 
 
-dt = 1;
-final_time = 5;
+dt = 1;                                                     
+final_time = 25;    
 numsteps = final_time/dt;
 x_tot = zeros(numsteps,1); I_indtot = zeros(numsteps,1);
 nonlinx_tot = zeros(numsteps,1);
@@ -109,10 +131,16 @@ for t = 1:numsteps
     P = H.Nodes.Suceptible + H.Nodes.Infected + tau.*(I_neigh + S_neigh);
 
     %Solving the ODE
-    dsdt(popNodes) = -beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) + gamma.*H.Nodes.Infected(popNodes) - tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) 
-    dqdt(popNodes) = lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
-        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist);
-    didt(popNodes) = beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) - gamma.*H.Nodes.Infected(popNodes) + tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) %- dqdt(popNodes);
+    dsdt(popNodes) = -beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) + gamma.*H.Nodes.Infected(popNodes) - tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes)...
+        + (1/7)*H.Nodes.Quarentine(popNodes) ;
+    didt(popNodes) =  beta.*(H.Nodes.Infected(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) - gamma.*H.Nodes.Infected(popNodes) + tau.*(I_neigh(popNodes).*H.Nodes.Suceptible(popNodes))./P(popNodes) ...
+ -(lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
+        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist));
+    dqdt(popNodes) = - (1/7).*H.Nodes.Quarentine(popNodes)...
+    +lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixneib),2)./dist + lambda1.*H.Nodes.Infected(popNodes).*sum(logical(pop_fixdneib),2)./(2*dist) + ...
+        lambda2.*H.Nodes.Infected(popNodes).*sum(pop_ntempsite,2)./dist + lambda2.*H.Nodes.Infected(popNodes).*sum(pop_dtempsite,2)./(2*dist)...
+       
+  
    
     %Explanation of dQdt
         %multiplies number of infected at each node by number of fixed
@@ -129,22 +157,23 @@ for t = 1:numsteps
   
     I_tot = [I_tot, sum(H.Nodes.Infected)];
     S_tot = [S_tot, sum(H.Nodes.Suceptible)];
+    Q_tot = [Q_tot, sum(H.Nodes.Quarentine)];
     
     % nonlinear optimization
     [nonlinx,val,exitFlag,Output] = nonlinear_opt_site_graphs(H.Nodes.Infected,didt,neib,dneib,possTest,dist,fixneib,fixdneib,possneib,possdneib);
     indnonlinx = find(nonlinx);
-    if size(indnonlinx,2) == 0
-        nonlinx_tot(t) = 0;
-    else
-        nonlinx_tot(t) = indnonlinx;
-    end
+%     if size(indnonlinx,2) == 0
+%         nonlinx_tot(t) = 0;
+%     else
+%         nonlinx_tot(t) = indnonlinx;
+%     end
     Ival = [];
     for node = 1:length(possTest)
         nnode = neib(node,:); nnode = nnode(nnode~=0);
         dnode = dneib(node,:); dnode = dnode(dnode~=0);
         Ival = [Ival,((didt(nnode)'*H.Nodes.Infected(nnode))/dist + (didt(dnode)'*H.Nodes.Infected(dnode))/(2*dist))];
     end
-    Ival_ind(t) = find(Ival == max(Ival)); 
+  %  Ival_ind(t) = find(Ival == max(Ival)); 
 %     indI = find(H.Nodes.Infected == max(H.Nodes.Infected));
 %     I_indtot(t) = indI;
 
@@ -167,9 +196,14 @@ figure
 plot(I_tot,'r')
 hold on
 plot(S_tot,'b')
-hold off
+hold on
+plot(Q_tot,'*')
+xlabel('Days');
+ylabel('Individuals');
+title('\beta = 0.6, \gamma = 0.2 N = 5')
+legend('Infected', 'Suceptible', 'Quarentine')
 
 % Look at nodes assigned for objective function and Infected number
-disp(possTest(nonlinx_tot))
-disp(possTest(Ival_ind))
+%disp(possTest(nonlinx_tot))
+%disp(possTest(Ival_ind))
 
